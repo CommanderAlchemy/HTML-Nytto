@@ -1,0 +1,16 @@
+/*Title of the framework */
+
+#titlepage {
+    text-align: left;
+    margin-left: 40px;
+    margin-right: 10px;
+}
+
+/*Stop people from selecting things when swyping.*/
+#framework {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
