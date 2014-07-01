@@ -1,130 +1,108 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!--
     Author:         Artur Olech M10P2603
-    Contributors:   Karl Morrison ab9736
     -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width<500, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width<500, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
-    <link type="text/css" rel="stylesheet" href="../css/reset.css">
-    <link type="text/css" rel="stylesheet" href="../css/mobile/jquery.mobile-1.4.2.css">
-    <link type="text/css" rel="stylesheet" href="../css/mobile/jquery.mobile.theme-1.4.2.css">
-    <link type="text/css" rel="stylesheet" href="../css/mobile/jquery.mobile.structure-1.4.2.css">
-    <link type="text/css" rel="stylesheet" href="../css/mobile/jquery.mobile.icons-1.4.2.css">
-    <link type="text/css" rel="stylesheet" href="../css/mobile/jquery.mobile.inline-png-1.4.2.css">
-    <link type="text/css" rel="stylesheet" href="../css/mobile/style.css">
-    <link type="text/css" rel="stylesheet" href="../css/icons.css">
+    <!-- Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="css/reset.css"/>
+    <link type="text/css" rel="stylesheet" href="css/jquery.mobile-1.4.2.css"/>
+    <link type="text/css" rel="stylesheet" href="css/jquery.mobile.theme-1.4.2.css"/>
+    <link type="text/css" rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.css"/>
+    <link type="text/css" rel="stylesheet" href="css/jquery.mobile.icons-1.4.2.css"/>
+    <link type="text/css" rel="stylesheet" href="css/jquery.mobile.inline-png-1.4.2.css"/>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="css/icons.css"/>
+    
+    <!-- Scripts -->
+    <script src="js/framework/jquery-2.1.0.js"></script>
+    <script src="js/framework/jquery.mobile-1.4.2.js"></script>
+    <script src="js/framework/framework.js"></script>
 
-    <title>ICU</title>
+    <!-- Title -->
+    <title>Nytto-Appen</title>
 </head>
 
+    
+    <!-- Body -->
 <body id="framework">
+    
     <div data-role="page" id="index" class="page ui-responsive-panel">
+        
         <!-- header -->
         <div data-role="header" data-theme="a">
-            <h1 id="titlepage">ICU</h1>
+            <!-- Content title -->
+            <h1 id="titlepage">Nytto-Appen</h1>
+            <!-- Menu button -->
             <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
-            <a href="#panel-right" data-icon="gear" data-iconpos="notext">Add</a>
         </div>
-        <!-- /header -->
 
-        <!-- content that is replaced by ajax -->
+        <!-- Page content -->
         <div id="content" class="ui-content">
-            <h2>content</h2>
         </div>
-        <!-- /content -->
 
-        <!-- Left menu panel -->
+        <!-- Menu Panel -->
         <div data-role="panel" data-position="left" data-position-fixed="false" data-display="overlay" id="nav-panel" data-theme="b">
 
             <ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px;" class="nav-search" id="nav">
                 <li data-icon="delete" style="background-color:#111;" data-theme="b">
-                    <!--Removed data-rel="close" since there is a bug in jquery mobile https://github.com/jquery/jquery-mobile/issues/1405 -->
+                    <!-- CloseBtn -->
                     <a href="#closeleft">Close menu</a>
                 </li>
 
-                <li data-filtertext="Inbox">
-                    <a href="html/dummy.html">
-                        <span class="ui-mail-icon-blue nav-ui-thumbnail"></span>
-                        <span class="ui-li-count ui-btn-up-a ui-btn-corner-all" id="mail#">2</span>
-                        <h1 class="ui-li-headline">Inbox</h1>
-                        <p class="ui-li-desc" id="gotMail">Du har mail!</p>
+                <!-- Menu content -->
+                <li data-filtertext="weather">
+                    <a href="content/weather.html">
+                        <span class="ui-icon-weather nav-ui-thumbnail"></span>
+                        <span class="ui-li-count ui-btn-up-a ui-btn-corner-all" id="weather_temp">2c</span>
+                        <h1 class="ui-li-headline">Vädret</h1>
+                        <!-- Temp -->
+                        <p class="ui-li-desc">Lokala vädret</p>
                     </a>
                 </li>
 
-                <li data-filtertext="Startsida">
-                    <a href="html/start.html">
-                        <span class="ui-start-icon nav-ui-thumbnail"></span>
-                        <h1 class="ui-li-headline">Startsida</h1>
-
+                <li data-filtertext="geolocation">
+                    <a href="content/geolocation.html">
+                        <span class="ui-icon-compass nav-ui-thumbnail"></span>
+                        <h1 class="ui-li-headline">Geolocation</h1>
+                        <p class="ui-li-desc">Google Maps</p>
                     </a>
                 </li>
 
-                <li data-filtertext="Översikt">
-                    <a href="html/overview.html">
-                        <span class="ui-overview-icon nav-ui-thumbnail"></span>
-                        <h1 class="ui-li-headline">Översikt</h1>
-                        <p id="attendanceTotal" class="ui-li-desc">Antal elever (null)</p>
-
-                    </a>
-                </li>
-
-                <!--Nav list divider-->
+                <!-- divider r-->
                 <li data-role="list-divider" role="heading" class="ui-button ui-li-divider ui-bar-a ui-li-has-count">
-                    Avdelningar
-                    <span id="departmentcount" class="ui-li-count ui-btn-up-a ui-btn-corner-all">null</span>
+                    Media
+                    <!-- Media Count -->
+                    <span id="media_count" class="ui-li-count ui-btn-up-a ui-btn-corner-all">null</span>
                 </li>
-                <!--/Nav list divider-->
+                
+                <li data-filtertext="media">
+                    <a href="content/media.html">
+                        <span class="ui-icon-media nav-ui-thumbnail"></span>
+                        <h1 class="ui-li-headline">Media</h1>
+                        <p class="ui-li-desc">Media som laddats upp</p>
+                    </a>
+                </li>
+                
+                <li data-filtertext="upload">
+                    <a href="content/upload_media.html">
+                        <span class="ui-icon-upload nav-ui-thumbnail"></span>
+                        <h1 class="ui-li-headline">Ladda upp</h1>
+                        <p class="ui-li-desc">Ladda upp media</p>
+                    </a>
+                </li>
+                
+                <li data-role="list-divider" role="heading" class="ui-button ui-li-divider ui-bar-a ui-li-has-count">
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons-licens" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a><br /><p class="ui-li-desc">Artur Olech <br> Commander.Alchemy@gmail.com <br> Icons by: <a href="http://www.doublejdesign.co.uk/">Double-J designs</a></p></li>
+                
             </ul>
         </div>
-        <!-- /Left menu panel -->
 
-        <!--Right panel-->
-        <div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="panel-right" data-theme="a">
-
-            <form class="userform">
-                <h1 class="headline">Create new user</h1>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
-
-                <label for="email">Email</label>
-                <input type="email" name="email" id="status" value="" data-clear-btn="true" data-mini="true">
-
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
-
-                <div class="switch">
-                    <label for="status">Status</label>
-                    <select name="status" id="slider" data-role="slider" data-mini="true">
-                        <option value="off">Inactive</option>
-                        <option value="on">Active</option>
-                    </select>
-                </div>
-
-                <div class="ui-grid-a">
-                    <div class="ui-block-a">
-                        <a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">Cancel</a>
-                    </div>
-                    <div class="ui-block-b">
-                        <a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">Save</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!-- /Right panel -->
     </div>
-    <!-- /page -->
-	
-	<!--Scripts-->
-	<script src="../js/config.js"></script>
-    <script src="../js/jquery-2.1.0.js"></script>
-    <script src="../js/mobile/jquery.mobile-1.4.2.js"></script>
-    <script src="../js/framework.js"></script>
-    <script src="./js/menu.js"></script>
+    
 </body>
-
 </html>

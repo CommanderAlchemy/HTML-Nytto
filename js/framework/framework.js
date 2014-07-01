@@ -1,6 +1,5 @@
 /*
  *  Author: Artur Olech M10P2603
- *
  */
 
 /**
@@ -16,17 +15,7 @@ $(document).one("pagecreate", "#index", function () {
     //Checks if localStorage is available.
     function initLocalStorage() {
         try {
-            if ('localStorage' in window && ['localStorage'] !== null) {
-                var token = localStorage.getItem("icu-token");
-                console.log("Token:" + token);
-                if (token === null) {
-                    console.log("Token missing, rederict to login!");
-                    window.location.replace("login.html");
-                }
-                else {
-                    loadPage("html/start.html",'<span class="ui-start-icon nav-ui-thumbnail"></span><h1 class="ui-li-headline">Startsida</h1>');
-                }
-            }
+            if ('localStorage' in window && ['localStorage'] !== null) {}
         } catch (e) {
             alert("localstorage not supported");
         }
@@ -42,7 +31,6 @@ $(document).one("pagecreate", "#index", function () {
             e.preventDefault();
             var page = $(this).attr("href");
             var title = $(this).html();
-			console.log("NY SIDA: " + page);
             // Dont load a href link from the closebutton in menu.
             if (page != '#closeleft') {
                 loadPage(page, title);
@@ -53,36 +41,6 @@ $(document).one("pagecreate", "#index", function () {
         $("#nav-panel").on("click", "li", function () {
             $("#nav-panel").panel("close");
         });
-
-
-        /*
-            Right Panel
-         */
-        $("#nav-right").on("click", "a", function (e) {
-            e.preventDefault();
-            var page = $(this).attr("href");
-            var title = $(this).html();
-			console.log(page);
-            // Dont load a href link from the closebutton in menu.
-            if (page != '#closeright') {
-			
-				/*
-					These two lines is for parents app only. No effect on teachers app right now but when
-					teachers right menu is updated, watch for trouble.
-				*/
-                localStorage.setItem("studentName", $(this).find('h1').text());
-				localStorage.setItem("studentId", $(this).find('input').val());
-                
-				
-				loadPage(page, title);
-            }
-        });
-
-        // Close right panel when clicking on menu item
-        $("#panel-right").on("click", "li", function () {
-            $("#panel-right").panel("close");
-        });
-
 
     }
 
@@ -132,19 +90,15 @@ $(document).one("pagecreate", "#index", function () {
 
     // Loads the swipe listener.
     function initSwipeListener() {
-        // Listen on swipes on framework and open left/right panel depending on swype direction.
-        // Two panels won't open at the same time.
+        // Listen on swipes on framework and open left panel depending on swype direction.
         $("#framework").on("swipeleft swiperight", function (e) {
             console.log("swype");
             if ($.mobile.activePage.jqmData("panel") !== "open") {
-                if (e.type === "swipeleft") {
-                    $("#panel-right").panel("open");
-                } else if (e.type === "swiperight") {
+                if (e.type === "swiperight") {
                     $("#nav-panel").panel("open");
-                }
+                } 
             } else {
                 $("#nav-panel").panel("close");
-                $("#panel-right").panel("close");
             }
         });
     }
